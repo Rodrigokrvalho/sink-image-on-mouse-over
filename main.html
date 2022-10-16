@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container" onmouseleave="rotateBack()">
+    <div id="image" class="image">
+      <img src="https://img.freepik.com/psd-gratuit/maquette-logo-noir-grave_125540-223.jpg?w=2000" alt="teste">
+    </div>
+    <div class="q1" onmouseenter="rotateTo(1)"></div>
+    <div class="q2" onmouseenter="rotateTo(2)"></div>
+    <div class="q3" onmouseenter="rotateTo(3)"></div>
+    <div class="q4" onmouseenter="rotateTo(4)"></div>
+  </div>
+  </body>
+
+  <script>
+    const image = document.getElementById('image')
+
+    function rotateTo(quarter) {
+      const rotations = [
+        , 
+        '1,-1,0, 15deg', 
+        '-1,-1,0, 15deg', 
+        '1,1,0, 15deg',
+        '-1,1,0, 15deg', 
+      ]
+
+      const shadowDimentions = [
+        ,
+        '10px 10px',
+        '-10px 10px',
+        '10px -10px',
+        '-10px -10px'
+      ]
+
+        image.style = `transform: rotate3d(${rotations[quarter]});box-shadow: ${shadowDimentions[quarter]} 15px 15px #545454;`
+    }
+
+    function rotateBack() {
+      image.style = 'transform: rotate3d(0,0,0, 0deg); box-shadow: 0 0 15px 15px #545454;'
+    }
+  </script>
+
+  <style>
+    :root {
+      --rotate: rotate3d(0,0,0, 0);
+    }
+
+    html {
+      background-image: linear-gradient(to bottom, gray, gainsboro);
+    }
+
+    .container {
+      position: absolute;
+      height: 500px;
+      width: 500px;
+      top: calc(50% - 250px);
+      left: calc(50% - 250px);
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas: 'q1 q2' 'q3 q4';
+    }
+
+    .image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 500px;
+      width: 500px;
+      z-index: -1;
+      transition: all 300ms ease;
+      border: solid 3px #bebebe;
+      box-shadow: 0 0 15px 15px #545454;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .q1,.q2,.q3,.q4 {
+      width: 250px;
+      height: 250px;
+    }
+  </style>
+</html>
