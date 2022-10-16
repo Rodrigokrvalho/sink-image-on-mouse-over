@@ -7,21 +7,21 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="container" onmouseleave="rotateBack()">
+  <div class="container" onmouseleave="flat()">
     <div id="image" class="image">
       <img src="https://img.freepik.com/psd-gratuit/maquette-logo-noir-grave_125540-223.jpg?w=2000" alt="teste">
     </div>
-    <div class="q1" onmouseenter="rotateTo(1)"></div>
-    <div class="q2" onmouseenter="rotateTo(2)"></div>
-    <div class="q3" onmouseenter="rotateTo(3)"></div>
-    <div class="q4" onmouseenter="rotateTo(4)"></div>
+    <div class="q1" onmouseenter="sinkTo(1)"></div>
+    <div class="q2" onmouseenter="sinkTo(2)"></div>
+    <div class="q3" onmouseenter="sinkTo(3)"></div>
+    <div class="q4" onmouseenter="sinkTo(4)"></div>
   </div>
   </body>
 
   <script>
     const image = document.getElementById('image')
 
-    function rotateTo(quarter) {
+    function sinkTo(quarter) {
       const rotations = [
         , 
         '1,-1,0, 15deg', 
@@ -41,16 +41,12 @@
         image.style = `transform: rotate3d(${rotations[quarter]});box-shadow: ${shadowDimentions[quarter]} 15px 15px #545454;`
     }
 
-    function rotateBack() {
+    function flat() {
       image.style = 'transform: rotate3d(0,0,0, 0deg); box-shadow: 0 0 15px 15px #545454;'
     }
   </script>
 
   <style>
-    :root {
-      --rotate: rotate3d(0,0,0, 0);
-    }
-
     html {
       background-image: linear-gradient(to bottom, gray, gainsboro);
     }
